@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on June 26, 2017, at 10:21
+    on June 27, 2017, at 09:26
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -118,12 +118,12 @@ for thisTrial in trials:
         # update/draw components on each frame
         
         # *grating* updates
-        if t >= 1 and grating.status == NOT_STARTED:
+        if t >= 0 and grating.status == NOT_STARTED:
             # keep track of start time/frame for later
             grating.tStart = t
             grating.frameNStart = frameN  # exact frame index
             grating.setAutoDraw(True)
-        frameRemains = 1 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
+        frameRemains = 0 + 2- win.monitorFramePeriod * 0.75  # most of one frame period left
         if grating.status == STARTED and t >= frameRemains:
             grating.setAutoDraw(False)
         
