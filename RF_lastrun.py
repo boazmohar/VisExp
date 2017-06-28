@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on June 26, 2017, at 10:03
+    on June 28, 2017, at 16:57
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -27,7 +27,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 expName = u'RF'  # from the Builder filename that created this script
-expInfo = {u'session': u'001', u'participant': u''}
+expInfo = {u'session': u'001', u'participant': u'test'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -40,7 +40,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'G:\\Scripts\\VisExp\\RF.psyexp',
+    originPath=u'C:\\Users\\labadmin\\Documents\\VisExp\\RF.psyexp',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -53,10 +53,11 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1920, 1200), fullscr=True, screen=0,
+    size=(1024, 768), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[-1,-1,0], colorSpace='rgb',
-    blendMode='avg', useFBO=True)
+    monitor=u'second', color=[-1,-1,0], colorSpace='rgb',
+    blendMode='avg', useFBO=True,
+    units='norm')
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
 if expInfo['frameRate'] != None:
@@ -81,15 +82,17 @@ grating = visual.GratingStim(
     ori=1.0, pos=[0,0], size=(1, 1), sf=1.0, phase=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     texRes=128, interpolate=True, depth=-1.0)
+import sys
+
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=1, method='sequential', 
+trials = data.TrialHandler(nReps=5, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions(u'RF_params.xlsx'),
+    trialList=data.importConditions('RF_params.xlsx'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -110,12 +113,15 @@ for thisTrial in trials:
     trialClock.reset()  # clock
     frameN = -1
     continueRoutine = True
-    routineTimer.add(2.000000)
+    routineTimer.add(6.000000)
     # update component parameters for each repeat
     
     grating.setPos(pos)
     grating.setOri(ori)
     grating.setSF(sf)
+    print('Position: %s, Orientation: %s, SF: %s' % (pos, ori, sf))
+    logging.flush()
+    sys.stdout.flush()
     # keep track of which components have finished
     trialComponents = [grating]
     for thisComponent in trialComponents:
@@ -131,16 +137,17 @@ for thisTrial in trials:
         
         
         # *grating* updates
-        if t >= 1 and grating.status == NOT_STARTED:
+        if t >= 3 and grating.status == NOT_STARTED:
             # keep track of start time/frame for later
             grating.tStart = t
             grating.frameNStart = frameN  # exact frame index
             grating.setAutoDraw(True)
-        frameRemains = 1 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
+        frameRemains = 3 + 3- win.monitorFramePeriod * 0.75  # most of one frame period left
         if grating.status == STARTED and t >= frameRemains:
             grating.setAutoDraw(False)
         if grating.status == STARTED:  # only update if drawing
             grating.setPhase(trialClock.getTime()*2, log=False)
+        
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -164,9 +171,11 @@ for thisTrial in trials:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     
+    
     thisExp.nextEntry()
     
-# completed 1 repeats of 'trials'
+# completed 5 repeats of 'trials'
+
 
 
 # these shouldn't be strictly necessary (should auto-save)

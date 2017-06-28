@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on June 26, 2017, at 10:10
+    on June 28, 2017, at 17:01
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -40,7 +40,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'G:\\Scripts\\VisExp\\Grating.psyexp',
+    originPath=u'C:\\Users\\labadmin\\Documents\\VisExp\\Grating.psyexp',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -53,9 +53,9 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1920, 1200), fullscr=True, screen=0,
+    size=(1024, 768), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor=u'testMonitor', color=[-1,-1,0], colorSpace='rgb',
+    monitor=u'second', color=[-1,-1,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -78,7 +78,7 @@ tex[..., -1] = grating
 grating = visual.GratingStim(
     win=win, name='grating',
     tex=tex, mask=u'gauss',
-    ori=1.0, pos=[0,0], size=(1, 1), sf=1.0, phase=1.0,
+    ori=1.0, pos=[0,0], size=(2, 2), sf=1.0, phase=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     texRes=128, interpolate=True, depth=-1.0)
 
@@ -113,7 +113,7 @@ for thisTrial in trials:
     routineTimer.add(2.000000)
     # update component parameters for each repeat
     
-    grating.setPos(pos)
+    grating.setPos([0,0])
     grating.setOri(ori)
     grating.setSF(sf)
     # keep track of which components have finished

@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <PsychoPy2experiment encoding="utf-8" version="1.85.1">
   <Settings>
-    <Param name="Monitor" updates="None" val="testMonitor" valType="str"/>
+    <Param name="Monitor" updates="None" val="second" valType="str"/>
     <Param name="color" updates="None" val="$[-1,-1,0]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
     <Param name="Experiment info" updates="None" val="{u'session': u'001', u'participant': u'test'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
-    <Param name="Units" updates="None" val="use prefs" valType="str"/>
+    <Param name="Units" updates="None" val="norm" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
-    <Param name="Window size (pixels)" updates="None" val="[1920, 1200]" valType="code"/>
+    <Param name="Window size (pixels)" updates="None" val="[1024, 768]" valType="code"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
@@ -24,7 +24,7 @@
     <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
     <Param name="expName" updates="None" val="RF" valType="str"/>
     <Param name="logging level" updates="None" val="exp" valType="code"/>
-    <Param name="Screen" updates="None" val="1" valType="num"/>
+    <Param name="Screen" updates="None" val="2" valType="num"/>
   </Settings>
   <Routines>
     <Routine name="trial">
@@ -42,7 +42,7 @@
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="None" val="grating" valType="code"/>
         <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
-        <Param name="stopVal" updates="constant" val="1" valType="code"/>
+        <Param name="stopVal" updates="constant" val="3" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="mask" updates="constant" val="gauss" valType="str"/>
         <Param name="pos" updates="set every repeat" val="$pos" valType="code"/>
@@ -54,10 +54,18 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="set every repeat" val="$ori" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="1" valType="code"/>
+        <Param name="startVal" updates="None" val="3" valType="code"/>
         <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
         <Param name="size" updates="constant" val="(1, 1)" valType="code"/>
       </GratingComponent>
+      <CodeComponent name="code">
+        <Param name="Begin Experiment" updates="constant" val="import sys&amp;#10;" valType="extendedCode"/>
+        <Param name="name" updates="None" val="code" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="print('Position: %s, Orientation: %s, SF: %s' % (pos, ori, sf))&amp;#10;logging.flush()&amp;#10;sys.stdout.flush()" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
     </Routine>
   </Routines>
   <Flow>
@@ -67,9 +75,9 @@
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="nReps" updates="None" val="5" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'ori': 0, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

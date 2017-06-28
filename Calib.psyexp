@@ -34,7 +34,7 @@
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="None" val="grating" valType="code"/>
         <Param name="color" updates="set every repeat" val="$Color" valType="str"/>
-        <Param name="stopVal" updates="constant" val="2" valType="code"/>
+        <Param name="stopVal" updates="constant" val="1" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="mask" updates="constant" val="None" valType="str"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
@@ -54,7 +54,7 @@
   </Routines>
   <Flow>
     <LoopInitiator loopType="TrialHandler" name="trials">
-      <Param name="conditionsFile" updates="None" val="Color_params.xlsx" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="Calib_params.xlsx" valType="str"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>

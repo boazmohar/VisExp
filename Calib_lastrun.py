@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on June 28, 2017, at 14:33
+    on June 28, 2017, at 16:24
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -26,7 +26,7 @@ _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemen
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-expName = u'Calib'  # from the Builder filename that created this script
+expName = 'Calib'  # from the Builder filename that created this script
 expInfo = {u'session': u'001', u'participant': u'test'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
@@ -55,7 +55,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 win = visual.Window(
     size=(1024, 768), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor=u'second', color=[-1,-1,0], colorSpace='rgb',
+    monitor='second', color=[-1,-1,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -68,7 +68,7 @@ else:
 trialClock = core.Clock()
 grating = visual.GratingStim(
     win=win, name='grating',units='norm', 
-    tex=u'sin', mask=None,
+    tex='sin', mask=None,
     ori=0, pos=(0, 0), size=(2, 2), sf=0, phase=0.0,
     color=1.0, colorSpace='rgb', opacity=1,
     texRes=128, interpolate=True, depth=0.0)
@@ -80,7 +80,7 @@ routineTimer = core.CountdownTimer()  # to track time remaining of each (non-sli
 # set up handler to look after randomisation of conditions etc
 trials = data.TrialHandler(nReps=1, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions(u'Calib_params.xlsx'),
+    trialList=data.importConditions('Calib_params.xlsx'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
