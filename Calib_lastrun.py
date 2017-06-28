@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on June 27, 2017, at 09:26
+    on June 28, 2017, at 10:08
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -40,7 +40,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'G:\\Scripts\\VisExp\\Calib.psyexp',
+    originPath=u'C:\\Users\\labadmin\\Documents\\VisExp\\Calib.psyexp',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -53,9 +53,9 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1920, 1200), fullscr=True, screen=0,
+    size=(1024, 768), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor=u'testMonitor', color=[-1,-1,0], colorSpace='rgb',
+    monitor=u'second', color=[-1,-1,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -67,7 +67,7 @@ else:
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
 grating = visual.GratingStim(
-    win=win, name='grating',
+    win=win, name='grating',units='norm', 
     tex=u'sin', mask=None,
     ori=0, pos=(0, 0), size=(2, 2), sf=0, phase=0.0,
     color=1.0, colorSpace='rgb', opacity=1,
@@ -80,7 +80,7 @@ routineTimer = core.CountdownTimer()  # to track time remaining of each (non-sli
 # set up handler to look after randomisation of conditions etc
 trials = data.TrialHandler(nReps=1, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions(u'Color_params.xlsx'),
+    trialList=data.importConditions(u'Calib_params.xlsx'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -101,7 +101,7 @@ for thisTrial in trials:
     trialClock.reset()  # clock
     frameN = -1
     continueRoutine = True
-    routineTimer.add(2.000000)
+    routineTimer.add(1.000000)
     # update component parameters for each repeat
     grating.setColor(Color, colorSpace='rgb')
     # keep track of which components have finished
@@ -123,7 +123,7 @@ for thisTrial in trials:
             grating.tStart = t
             grating.frameNStart = frameN  # exact frame index
             grating.setAutoDraw(True)
-        frameRemains = 0 + 2- win.monitorFramePeriod * 0.75  # most of one frame period left
+        frameRemains = 0 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
         if grating.status == STARTED and t >= frameRemains:
             grating.setAutoDraw(False)
         
