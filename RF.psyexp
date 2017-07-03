@@ -36,6 +36,27 @@
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
+      <ParallelOutComponent name="TrialTrigger">
+        <Param name="name" updates="None" val="TrialTrigger" valType="code"/>
+        <Param name="syncScreen" updates="constant" val="False" valType="bool"/>
+        <Param name="stopData" updates="None" val="0" valType="code"/>
+        <Param name="stopVal" updates="constant" val="0.01" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="address" updates="None" val="LabJack U3" valType="str"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startData" updates="None" val="255" valType="code"/>
+      </ParallelOutComponent>
+      <CodeComponent name="U3Status">
+        <Param name="Begin Experiment" updates="constant" val="# Add status to the labjack U3&amp;#10;TrialTrigger.status=None&amp;#10;" valType="extendedCode"/>
+        <Param name="name" updates="None" val="U3Status" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
       <GratingComponent name="grating">
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="tex" updates="constant" val="$tex" valType="str"/>
@@ -58,14 +79,6 @@
         <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
         <Param name="size" updates="constant" val="(1, 1)" valType="code"/>
       </GratingComponent>
-      <CodeComponent name="code">
-        <Param name="Begin Experiment" updates="constant" val="import sys&amp;#10;" valType="extendedCode"/>
-        <Param name="name" updates="None" val="code" valType="code"/>
-        <Param name="Begin Routine" updates="constant" val="print('Position: %s, Orientation: %s, SF: %s' % (pos, ori, sf))&amp;#10;logging.flush()&amp;#10;sys.stdout.flush()" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-      </CodeComponent>
     </Routine>
   </Routines>
   <Flow>
@@ -77,7 +90,7 @@
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="5" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'ori': 0, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0.66, 0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 0, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [-0.66, -0.66], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [-0.66, -0.66], 'sf': 2}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

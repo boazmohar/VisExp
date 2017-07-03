@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on Sun Jul  2 22:11:19 2017
+    on Sun Jul  2 22:55:24 2017
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -40,7 +40,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'/Users/moharb/Documents/Repos/VisExp/Grating.psyexp',
+    originPath=None,
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -66,6 +66,10 @@ else:
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
+from psychopy.hardware import labjacks
+TrialTrigger = labjacks.U3()
+# Adding status to labjack U3
+TrialTrigger.status=None
 import numpy as np
 import psychopy.filters
 grating_res = 256
@@ -75,19 +79,16 @@ grating = psychopy.filters.makeGrating(res=grating_res, cycles=1.0)
 tex = np.ones((grating_res, grating_res, 3)) * -1.0
 # replace the blue channel with the grating
 tex[..., -1] = grating
-# Adding status to labjack U3
-TrialTrigger.status=None
 grating = visual.GratingStim(
     win=win, name='grating',
     tex=tex, mask=u'gauss',
     ori=1.0, pos=[0,0], size=(1, 1), sf=1.0, phase=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
-    texRes=128, interpolate=True, depth=-2.0)
-trial_text = u''
+    texRes=128, interpolate=True, depth=-3.0)
 win2 = visual.Window(
     size=(300, 300), fullscr=False, screen=0,
     allowGUI=False, allowStencil=False,
-    monitor=u'second', color=[-1,-1,0], colorSpace='rgb',
+    monitor=u'second', color=[1,1,1], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 
 # Create some handy timers
@@ -126,11 +127,10 @@ for thisTrial in trials:
     grating.setOri(ori)
     grating.setSF(sf)
     if thisTrial != None:
-        trial_text = u''
+        trial_text = ''
         for paramName in thisTrial.keys():
-            print(paramName)
-            temp = exec(paramName)
-            trial_text += u'%s = %s' % (paramName, temp))
+            exec('temp = ' + paramName)
+            trial_text += u'%s = %s  ' % (paramName, temp)
     text = visual.TextStim(win=win2, name='text',
         text=trial_text,
         font=u'Arial',
@@ -140,7 +140,7 @@ for thisTrial in trials:
     text.setAutoDraw(True)
     win2.flip()
     # keep track of which components have finished
-    trialComponents = [grating]
+    trialComponents = [TrialTrigger, grating]
     for thisComponent in trialComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -151,6 +151,17 @@ for thisTrial in trials:
         t = trialClock.getTime()
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
+        # *TrialTrigger* updates
+        if t >= 0.0 and TrialTrigger.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            TrialTrigger.tStart = t
+            TrialTrigger.frameNStart = frameN  # exact frame index
+            TrialTrigger.status = STARTED
+            TrialTrigger.setData(int(255))
+        frameRemains = 0.0 + 0.005- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if TrialTrigger.status == STARTED and t >= frameRemains:
+            TrialTrigger.status = STOPPED
+            TrialTrigger.setData(int(0))
         
         
         
@@ -188,6 +199,8 @@ for thisTrial in trials:
     for thisComponent in trialComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
+    if TrialTrigger.status == STARTED:
+        TrialTrigger.setData(int(0))
     
     
     
