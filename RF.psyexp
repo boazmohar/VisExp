@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <PsychoPy2experiment encoding="utf-8" version="1.85.1">
   <Settings>
-    <Param name="Monitor" updates="None" val="second" valType="str"/>
+    <Param name="Monitor" updates="None" val="xrite" valType="str"/>
     <Param name="color" updates="None" val="$[-1,-1,0]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
-    <Param name="Experiment info" updates="None" val="{u'session': u'001', u'participant': u'test'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR67', u'Run': u'Run1'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
     <Param name="Units" updates="None" val="norm" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
-    <Param name="Window size (pixels)" updates="None" val="[1024, 768]" valType="code"/>
+    <Param name="Window size (pixels)" updates="None" val="[1280, 1024]" valType="code"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
@@ -28,14 +28,6 @@
   </Settings>
   <Routines>
     <Routine name="trial">
-      <CodeComponent name="tex">
-        <Param name="Begin Experiment" updates="constant" val="import numpy as np&amp;#10;import psychopy.filters&amp;#10;grating_res = 256&amp;#10;&amp;#10;grating = psychopy.filters.makeGrating(res=grating_res, cycles=1.0)&amp;#10;# initialise a 'black' texture&amp;#10;tex = np.ones((grating_res, grating_res, 3)) * -1.0&amp;#10;# replace the blue channel with the grating&amp;#10;tex[..., -1] = grating" valType="extendedCode"/>
-        <Param name="name" updates="None" val="tex" valType="code"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-      </CodeComponent>
       <ParallelOutComponent name="TrialTrigger">
         <Param name="name" updates="None" val="TrialTrigger" valType="code"/>
         <Param name="syncScreen" updates="constant" val="False" valType="bool"/>
@@ -57,43 +49,157 @@
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
+      <CodeComponent name="TrialType">
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="name" updates="None" val="TrialType" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="if thisTrial != None:&amp;#10;    trial_text = ''&amp;#10;    for paramName in thisTrial.keys():&amp;#10;        exec('temp = ' + paramName)&amp;#10;        trial_text += u'%s = %s  \n' % (paramName, temp)&amp;#10;    print(trial_text)" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+      <CodeComponent name="tex">
+        <Param name="Begin Experiment" updates="constant" val="import numpy as np&amp;#10;import psychopy.filters&amp;#10;grating_res = 512&amp;#10;&amp;#10;#grating = psychopy.filters.makeGrating(res=grating_res, cycles=1.0)&amp;#10;# initialise a 'black' texture&amp;#10;tex = np.ones((grating_res, grating_res, 3)) * -1.0&amp;#10;# replace the blue channel with the grating&amp;#10;tex[:,256:, -1] = 1&amp;#10;#tex[..., -1] = grating" valType="extendedCode"/>
+        <Param name="name" updates="None" val="tex" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
       <GratingComponent name="grating">
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="tex" updates="constant" val="$tex" valType="str"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="None" val="grating" valType="code"/>
         <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
-        <Param name="stopVal" updates="constant" val="3" valType="code"/>
+        <Param name="stopVal" updates="constant" val="1" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="mask" updates="constant" val="gauss" valType="str"/>
+        <Param name="mask" updates="constant" val="circle" valType="str"/>
         <Param name="pos" updates="set every repeat" val="$pos" valType="code"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="texture resolution" updates="constant" val="128" valType="code"/>
-        <Param name="phase" updates="set every frame" val="trialClock.getTime()*2" valType="code"/>
+        <Param name="units" updates="None" val="deg" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="phase" updates="set every frame" val="trialClock.getTime()*freq" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="ori" updates="set every repeat" val="$ori" valType="code"/>
+        <Param name="ori" updates="set every repeat" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="3" valType="code"/>
+        <Param name="startVal" updates="None" val="6" valType="code"/>
         <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
-        <Param name="size" updates="constant" val="(1, 1)" valType="code"/>
+        <Param name="size" updates="set every repeat" val="$size" valType="code"/>
       </GratingComponent>
+      <GratingComponent name="grating_2">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="tex" updates="constant" val="$tex" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="grating_2" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="mask" updates="constant" val="circle" valType="str"/>
+        <Param name="pos" updates="set every repeat" val="$pos" valType="code"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="deg" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="phase" updates="set every frame" val="trialClock.getTime()*freq" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="set every repeat" val="45" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="7" valType="code"/>
+        <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
+        <Param name="size" updates="set every repeat" val="$size" valType="code"/>
+      </GratingComponent>
+      <GratingComponent name="grating_3">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="tex" updates="constant" val="$tex" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="grating_3" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="mask" updates="constant" val="circle" valType="str"/>
+        <Param name="pos" updates="set every repeat" val="$pos" valType="code"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="deg" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="phase" updates="set every frame" val="trialClock.getTime()*freq" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="set every repeat" val="90" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="8" valType="code"/>
+        <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
+        <Param name="size" updates="set every repeat" val="$size" valType="code"/>
+      </GratingComponent>
+      <GratingComponent name="grating_4">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="tex" updates="constant" val="$tex" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="grating_4" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="mask" updates="constant" val="circle" valType="str"/>
+        <Param name="pos" updates="set every repeat" val="$pos" valType="code"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="deg" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="phase" updates="set every frame" val="trialClock.getTime()*freq" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="set every repeat" val="135" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="9" valType="code"/>
+        <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
+        <Param name="size" updates="set every repeat" val="$size" valType="code"/>
+      </GratingComponent>
+      <CodeComponent name="save_to_dm11">
+        <Param name="Begin Experiment" updates="constant" val="import pickle&amp;#10;import shutil&amp;#10;base = u'V:\\users\\Aaron'&amp;#10;date = data.getDateStr(format='%y%m%d')&amp;#10;filename = '%s\\%s_%s\\%s\\vis' % (base, date,&amp;#10;expInfo['participant'], expInfo['Run'])&amp;#10;directory = os.path.dirname(filename)&amp;#10;if not os.path.exists(directory):&amp;#10;    os.makedirs(directory)&amp;#10;#os.chdir(directory)&amp;#10;saved=False&amp;#10;logging.filename = filename+'.log'&amp;#10;thisExp.filename=filename&amp;#10;src = _thisDir + '\\' + expName + '.psyexp'&amp;#10;des = directory + '\\' + expName + '.psyexp'&amp;#10;shutil.copy(src, des)&amp;#10;print('copied %s to %s' % (src, des))" valType="extendedCode"/>
+        <Param name="name" updates="None" val="save_to_dm11" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="if not saved:&amp;#10;    pickle.dump(trials, open(filename+'.p','wb'))&amp;#10;    saved=True&amp;#10;    print('Saved to %s' % filename+'.p')&amp;#10;    " valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="end">
+      <ParallelOutComponent name="TrialTriger_2">
+        <Param name="name" updates="None" val="TrialTriger_2" valType="code"/>
+        <Param name="syncScreen" updates="constant" val="False" valType="bool"/>
+        <Param name="stopData" updates="None" val="0" valType="code"/>
+        <Param name="stopVal" updates="constant" val="0.01" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="address" updates="None" val="LabJack U3" valType="str"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startData" updates="None" val="1" valType="code"/>
+      </ParallelOutComponent>
+      <CodeComponent name="code_2">
+        <Param name="Begin Experiment" updates="constant" val="TrialTriger_2.status=None" valType="extendedCode"/>
+        <Param name="name" updates="None" val="code_2" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
     </Routine>
   </Routines>
   <Flow>
     <LoopInitiator loopType="TrialHandler" name="trials">
-      <Param name="conditionsFile" updates="None" val="RF_params.xlsx" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="RF_custom.xlsx" valType="str"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="5" valType="code"/>
+      <Param name="nReps" updates="None" val="20" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [0.66, 0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [-0.66, -0.66], 'ori': 135}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 0.03, 'pos': [-15, 15], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [10, 15], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [35, 15], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [-15, -10], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [10, -10], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [35, -10], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [-15, -35], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [10, -35], 'size': [35, 35]}, {'freq': 1, 'sf': 0.03, 'pos': [35, -35], 'size': [35, 35]}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
     <LoopTerminator name="trials"/>
+    <Routine name="end"/>
   </Flow>
 </PsychoPy2experiment>
