@@ -129,7 +129,7 @@
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="20" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'ori': 0, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 180, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 225, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 270, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 315, 'pos': [0, 0], 'sf': 2}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 0}, {'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 45}, {'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 90}, {'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 135}, {'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 180}, {'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 225}, {'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 270}, {'freq': 1, 'sf': 2, 'pos': [0, 0], 'ori': 315}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

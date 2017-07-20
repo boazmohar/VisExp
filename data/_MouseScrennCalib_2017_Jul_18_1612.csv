@@ -1,0 +1,4 @@
+color,trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,date,frameRate,expName,session,participant,
+"[-1, -1, -0.2]",0,0,0,0,2017_Jul_18_1612,60.0922479695,MouseScrennCalib,001,,
+"[-1, -1, -0.1]",0,1,1,1,2017_Jul_18_1612,60.0922479695,MouseScrennCalib,001,,
+"[-1, -1, -0.05]",0,2,2,2,2017_Jul_18_1612,60.0922479695,MouseScrennCalib,001,,

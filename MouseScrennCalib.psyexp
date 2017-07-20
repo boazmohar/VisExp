@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <PsychoPy2experiment encoding="utf-8" version="1.85.1">
   <Settings>
-    <Param name="Monitor" updates="None" val="testMonitor" valType="str"/>
+    <Param name="Monitor" updates="None" val="test2" valType="str"/>
     <Param name="color" updates="None" val="$[0,0,0]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
-    <Param name="Experiment info" updates="None" val="{'participant':'', 'session':'001'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR67', u'Run': u'Run1'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
     <Param name="Units" updates="None" val="use prefs" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
-    <Param name="Window size (pixels)" updates="None" val="(1024, 768)" valType="code"/>
+    <Param name="Window size (pixels)" updates="None" val="[1280, 1024]" valType="code"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
@@ -24,13 +24,34 @@
     <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
     <Param name="expName" updates="None" val="MouseScrennCalib" valType="str"/>
     <Param name="logging level" updates="None" val="exp" valType="code"/>
-    <Param name="Screen" updates="None" val="1" valType="num"/>
+    <Param name="Screen" updates="None" val="2" valType="num"/>
   </Settings>
   <Routines>
     <Routine name="trial">
-      <CodeComponent name="code">
+      <ParallelOutComponent name="TrialTrigger">
+        <Param name="name" updates="None" val="TrialTrigger" valType="code"/>
+        <Param name="syncScreen" updates="constant" val="False" valType="bool"/>
+        <Param name="stopData" updates="None" val="0" valType="code"/>
+        <Param name="stopVal" updates="constant" val="0.01" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="address" updates="None" val="LabJack U3" valType="str"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startData" updates="None" val="255" valType="code"/>
+      </ParallelOutComponent>
+      <CodeComponent name="U3_Status">
+        <Param name="Begin Experiment" updates="constant" val="# Adding status to labjack U3&amp;#10;TrialTrigger.status=None" valType="extendedCode"/>
+        <Param name="name" updates="None" val="U3_Status" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+      <CodeComponent name="texture">
         <Param name="Begin Experiment" updates="constant" val="tex1 = np.ones((2,2,3)) *-1&amp;#10;tex1[0, 0, 2] = 1&amp;#10;tex1[1, 1, 2] = 1" valType="extendedCode"/>
-        <Param name="name" updates="None" val="code" valType="code"/>
+        <Param name="name" updates="None" val="texture" valType="code"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -79,6 +100,45 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="size" updates="constant" val="(2, 2)" valType="code"/>
       </PolygonComponent>
+      <CodeComponent name="TrialType">
+        <Param name="Begin Experiment" updates="constant" val="win2 = visual.Window(&amp;#10;    size=(600, 600), fullscr=False, screen=0,&amp;#10;    allowGUI=False, allowStencil=False,&amp;#10;    monitor=u'test2', color=[-1,-1,-1], colorSpace='rgb',&amp;#10;    blendMode='avg', useFBO=True, pos=[300, 300])&amp;#10;text2 = visual.TextStim(win=win2, name='text',&amp;#10;    text='',&amp;#10;    font=u'Arial',&amp;#10;    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, &amp;#10;    color=u'white', colorSpace='rgb', opacity=1,&amp;#10;    depth=-6.0);&amp;#10;&amp;#10;text2.setAutoDraw(True)" valType="extendedCode"/>
+        <Param name="name" updates="None" val="TrialType" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="if thisTrial != None:&amp;#10;    trial_text = ''&amp;#10;    for paramName in thisTrial.keys():&amp;#10;        exec('temp = ' + paramName)&amp;#10;        trial_text += u'%s = %s  \n' % (paramName, temp)&amp;#10;    print(trial_text)&amp;#10;text2.text = trial_text&amp;#10;win2.flip()" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+      <CodeComponent name="save_to_dm11">
+        <Param name="Begin Experiment" updates="constant" val="import pickle&amp;#10;import shutil&amp;#10;base = u'V:\\users\\Aaron'&amp;#10;date = data.getDateStr(format='%y%m%d')&amp;#10;filename = '%s\\%s_%s\\%s\\vis' % (base, date,&amp;#10;expInfo['participant'], expInfo['Run'])&amp;#10;directory = os.path.dirname(filename)&amp;#10;if not os.path.exists(directory):&amp;#10;    os.makedirs(directory)&amp;#10;#os.chdir(directory)&amp;#10;saved=False&amp;#10;logging.filename = filename+'.log'&amp;#10;thisExp.filename=filename&amp;#10;src = _thisDir + '\\' + expName + '.psyexp'&amp;#10;des = directory + '\\' + expName + '.psyexp'&amp;#10;shutil.copy(src, des)&amp;#10;print('copied %s to %s' % (src, des))" valType="extendedCode"/>
+        <Param name="name" updates="None" val="save_to_dm11" valType="code"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if not saved:&amp;#10;    pickle.dump(trials, open(filename+'.p','wb'))&amp;#10;    saved=True&amp;#10;    print('Saved to %s' % filename+'.p')&amp;#10;    " valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="end">
+      <ParallelOutComponent name="TrialTriger_2">
+        <Param name="name" updates="None" val="TrialTriger_2" valType="code"/>
+        <Param name="syncScreen" updates="constant" val="False" valType="bool"/>
+        <Param name="stopData" updates="None" val="0" valType="code"/>
+        <Param name="stopVal" updates="constant" val="0.01" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="address" updates="None" val="LabJack U3" valType="str"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startData" updates="None" val="1" valType="code"/>
+      </ParallelOutComponent>
+      <CodeComponent name="code_2">
+        <Param name="Begin Experiment" updates="constant" val="TrialTriger_2.status=None" valType="extendedCode"/>
+        <Param name="name" updates="None" val="code_2" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
     </Routine>
   </Routines>
   <Flow>
@@ -91,7 +151,7 @@
       <Param name="nReps" updates="None" val="10" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="conditions" updates="None" val="[{'color': [-1, -1, -0.2]}, {'color': [-1, -1, -0.1]}, {'color': [-1, -1, -0.05]}, {'color': [-1, -1, 0]}, {'color': [-1, -1, 0.05]}, {'color': [-1, -1, 0.1]}, {'color': [-1, -1, 0.2]}]" valType="str"/>
-      <Param name="Selected rows" updates="None" val="" valType="code"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
     <LoopTerminator name="trials"/>
