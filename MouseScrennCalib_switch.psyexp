@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<PsychoPy2experiment encoding="utf-8" version="1.85.1">
+  <Settings>
+    <Param name="Monitor" updates="None" val="test2" valType="str"/>
+    <Param name="color" updates="None" val="$[0,0,0]" valType="str"/>
+    <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
+    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR67', u'Run': u'Run1'}" valType="code"/>
+    <Param name="JS libs" updates="None" val="packaged" valType="str"/>
+    <Param name="Units" updates="None" val="use prefs" valType="str"/>
+    <Param name="Save excel file" updates="None" val="False" valType="bool"/>
+    <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
+    <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
+    <Param name="Window size (pixels)" updates="None" val="[1280, 1024]" valType="code"/>
+    <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
+    <Param name="blendMode" updates="None" val="avg" valType="str"/>
+    <Param name="Use version" updates="None" val="" valType="str"/>
+    <Param name="HTML path" updates="None" val="html" valType="str"/>
+    <Param name="Save csv file" updates="None" val="False" valType="bool"/>
+    <Param name="OSF Project ID" updates="None" val="" valType="str"/>
+    <Param name="Save log file" updates="None" val="True" valType="bool"/>
+    <Param name="Save wide csv file" updates="None" val="True" valType="bool"/>
+    <Param name="Show mouse" updates="None" val="False" valType="bool"/>
+    <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
+    <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
+    <Param name="expName" updates="None" val="MouseScrennCalib_switch" valType="str"/>
+    <Param name="logging level" updates="None" val="exp" valType="code"/>
+    <Param name="Screen" updates="None" val="2" valType="num"/>
+  </Settings>
+  <Routines>
+    <Routine name="trial">
+      <CodeComponent name="texture">
+        <Param name="Begin Experiment" updates="constant" val="tex1 = np.ones((8,8,3)) *-1&amp;#10;tex1[:4, :4, 2] = 1&amp;#10;tex1[4:, 4:, 2] = 1&amp;#10;&amp;#10;tex2 = np.ones((8,8,3)) *-1&amp;#10;tex2[:4, 4:, 2] = 1&amp;#10;tex2[4:, :4, 2] = 1" valType="extendedCode"/>
+        <Param name="name" updates="None" val="texture" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+      <GratingComponent name="grating">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="tex" updates="constant" val="$tex1" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="grating" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="stopVal" updates="constant" val="4" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="interpolate" updates="constant" val="nearest" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="pix" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="phase" updates="constant" val="0.0" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0" valType="code"/>
+        <Param name="sf" updates="constant" val="0.125" valType="code"/>
+        <Param name="size" updates="constant" val="2048" valType="code"/>
+      </GratingComponent>
+      <GratingComponent name="grating_2">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="tex" updates="constant" val="$tex2" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="grating_2" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="stopVal" updates="constant" val="4" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="interpolate" updates="constant" val="nearest" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="pix" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="phase" updates="constant" val="0.0" valType="code"/>
+        <Param name="startVal" updates="None" val="4" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="sf" updates="constant" val="0.125" valType="code"/>
+        <Param name="size" updates="constant" val="2048" valType="code"/>
+      </GratingComponent>
+    </Routine>
+    <Routine name="end">
+      <ParallelOutComponent name="TrialTriger_2">
+        <Param name="name" updates="None" val="TrialTriger_2" valType="code"/>
+        <Param name="syncScreen" updates="constant" val="False" valType="bool"/>
+        <Param name="stopData" updates="None" val="0" valType="code"/>
+        <Param name="stopVal" updates="constant" val="0.01" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="address" updates="None" val="LabJack U3" valType="str"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startData" updates="None" val="1" valType="code"/>
+      </ParallelOutComponent>
+      <CodeComponent name="code_2">
+        <Param name="Begin Experiment" updates="constant" val="TrialTriger_2.status=None" valType="extendedCode"/>
+        <Param name="name" updates="None" val="code_2" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+    </Routine>
+  </Routines>
+  <Flow>
+    <LoopInitiator loopType="TrialHandler" name="trials">
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="name" updates="None" val="trials" valType="code"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="10" valType="code"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+    </LoopInitiator>
+    <Routine name="trial"/>
+    <LoopTerminator name="trials"/>
+  </Flow>
+</PsychoPy2experiment>
