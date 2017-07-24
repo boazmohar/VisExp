@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on July 18, 2017, at 17:00
+    on July 21, 2017, at 17:41
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -55,7 +55,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 win = visual.Window(
     size=(1280, 1024), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor=u'test2', color=[0,0,0], colorSpace='rgb',
+    monitor=u'xrite', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -89,7 +89,7 @@ polygon = visual.Rect(
 win2 = visual.Window(
     size=(600, 600), fullscr=False, screen=0,
     allowGUI=False, allowStencil=False,
-    monitor=u'test2', color=[-1,-1,-1], colorSpace='rgb',
+    monitor=u'xrite', color=[-1,-1,-1], colorSpace='rgb',
     blendMode='avg', useFBO=True, pos=[300, 300])
 text2 = visual.TextStim(win=win2, name='text',
     text='',
@@ -122,7 +122,7 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=10, method='sequential', 
+trials = data.TrialHandler(nReps=20, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('MouseCalib.xlsx'),
     seed=None, name='trials')
@@ -145,7 +145,7 @@ for thisTrial in trials:
     trialClock.reset()  # clock
     frameN = -1
     continueRoutine = True
-    routineTimer.add(6.000000)
+    routineTimer.add(10.000000)
     # update component parameters for each repeat
     
     
@@ -191,12 +191,12 @@ for thisTrial in trials:
         
         
         # *grating* updates
-        if t >= 3 and grating.status == NOT_STARTED:
+        if t >= 5 and grating.status == NOT_STARTED:
             # keep track of start time/frame for later
             grating.tStart = t
             grating.frameNStart = frameN  # exact frame index
             grating.setAutoDraw(True)
-        frameRemains = 3 + 3- win.monitorFramePeriod * 0.75  # most of one frame period left
+        frameRemains = 5 + 5- win.monitorFramePeriod * 0.75  # most of one frame period left
         if grating.status == STARTED and t >= frameRemains:
             grating.setAutoDraw(False)
         
@@ -206,7 +206,7 @@ for thisTrial in trials:
             polygon.tStart = t
             polygon.frameNStart = frameN  # exact frame index
             polygon.setAutoDraw(True)
-        frameRemains = 0.0 + 3- win.monitorFramePeriod * 0.75  # most of one frame period left
+        frameRemains = 0.0 + 5- win.monitorFramePeriod * 0.75  # most of one frame period left
         if polygon.status == STARTED and t >= frameRemains:
             polygon.setAutoDraw(False)
         
@@ -241,7 +241,7 @@ for thisTrial in trials:
     
     thisExp.nextEntry()
     
-# completed 10 repeats of 'trials'
+# completed 20 repeats of 'trials'
 
 
 

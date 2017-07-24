@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on July 18, 2017, at 16:00
+    on July 24, 2017, at 15:21
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -87,7 +87,7 @@ grating = visual.GratingStim(
     tex='sin', mask=None,
     ori=0, pos=(0, 0), size=(2, 2), sf=0, phase=0.0,
     color=1.0, colorSpace='rgb', opacity=1,
-    texRes=128, interpolate=True, depth=-3.0)
+    texRes=512, interpolate=True, depth=-3.0)
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
