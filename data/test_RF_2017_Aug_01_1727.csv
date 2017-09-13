@@ -1,0 +1,6 @@
+freq,sf,pos,size,trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,date,Run,expName,participant,frameRate,
+1,0.03,"[-5, 35]","[40, 40]",0,0,0,0,2017_Aug_01_1727,Run1,RF,test,60.0540192183,
+1,0.03,"[30, 35]","[40, 40]",0,1,1,1,2017_Aug_01_1727,Run1,RF,test,60.0540192183,
+1,0.03,"[65, 35]","[40, 40]",0,2,2,2,2017_Aug_01_1727,Run1,RF,test,60.0540192183,
+1,0.03,"[-5, 0]","[40, 40]",0,3,3,3,2017_Aug_01_1727,Run1,RF,test,60.0540192183,
+1,0.03,"[30, 0]","[40, 40]",0,4,4,4,2017_Aug_01_1727,Run1,RF,test,60.0540192183,

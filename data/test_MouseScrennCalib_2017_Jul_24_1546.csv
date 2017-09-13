@@ -1,0 +1,8 @@
+color,trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,date,Run,expName,participant,frameRate,
+"[-1, -1, -0.6]",0,0,0,0,2017_Jul_24_1546,Run1,MouseScrennCalib,test,60.0211799681,
+"[-1, -1, -0.3]",0,1,1,1,2017_Jul_24_1546,Run1,MouseScrennCalib,test,60.0211799681,
+"[-1, -1, -0.1]",0,2,2,2,2017_Jul_24_1546,Run1,MouseScrennCalib,test,60.0211799681,
+"[-1, -1, 0]",0,3,3,3,2017_Jul_24_1546,Run1,MouseScrennCalib,test,60.0211799681,
+"[-1, -1, 0.1]",0,4,4,4,2017_Jul_24_1546,Run1,MouseScrennCalib,test,60.0211799681,
+"[-1, -1, 0.3]",0,5,5,5,2017_Jul_24_1546,Run1,MouseScrennCalib,test,60.0211799681,
+"[-1, -1, 0.6]",0,6,6,6,2017_Jul_24_1546,Run1,MouseScrennCalib,test,60.0211799681,

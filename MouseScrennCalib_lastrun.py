@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on July 21, 2017, at 18:02
+    on July 24, 2017, at 16:30
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -26,7 +26,7 @@ _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemen
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-expName = u'MouseScrennCalib'  # from the Builder filename that created this script
+expName = 'MouseScrennCalib'  # from the Builder filename that created this script
 expInfo = {u'participant': u'BMWR67', u'Run': u'Run1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
@@ -55,7 +55,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 win = visual.Window(
     size=(1280, 1024), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor=u'test2', color=[0,0,0], colorSpace='rgb',
+    monitor='test2', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -70,35 +70,32 @@ from psychopy.hardware import labjacks
 TrialTrigger = labjacks.U3()
 # Adding status to labjack U3
 TrialTrigger.status=None
-tex1 = np.ones((2,2,3)) *-1
-tex1[0, 0, 2] = 1
-tex1[1, 1, 2] = 1
-grating = visual.GratingStim(
-    win=win, name='grating',units='pix', 
-    tex=tex1, mask=None,
-    ori=0, pos=(0, 0), size=2048, sf=0.5, phase=0.0,
-    color=[1,1,1], colorSpace='rgb', opacity=1,
-    texRes=512, interpolate=False, depth=-3.0)
+tex1 = np.ones((8,8,3)) *-1
+tex1[:4, :4, 2] = 1
+tex1[4:, 4:, 2] = 1
+
+tex2 = np.ones((8,8,3)) *-1
+tex2[:4, 4:, 2] = 1
+tex2[4:, :4, 2] = 1
 polygon = visual.Rect(
     win=win, name='polygon',
     width=(2, 2)[0], height=(2, 2)[1],
     ori=0, pos=(0, 0),
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
     fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-4.0, interpolate=False)
-win2 = visual.Window(
-    size=(600, 600), fullscr=False, screen=0,
-    allowGUI=False, allowStencil=False,
-    monitor=u'test2', color=[-1,-1,-1], colorSpace='rgb',
-    blendMode='avg', useFBO=True, pos=[300, 300])
-text2 = visual.TextStim(win=win2, name='text',
-    text='',
-    font=u'Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
-    color=u'white', colorSpace='rgb', opacity=1,
-    depth=-6.0);
-
-text2.setAutoDraw(True)
+    opacity=1, depth=-3.0, interpolate=False)
+grating = visual.GratingStim(
+    win=win, name='grating',units='pix', 
+    tex=tex1, mask=None,
+    ori=0, pos=(0, 0), size=2048, sf=0.125, phase=0.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    texRes=512, interpolate=False, depth=-4.0)
+grating_2 = visual.GratingStim(
+    win=win, name='grating_2',units='pix', 
+    tex=tex2, mask=None,
+    ori=0, pos=(0, 0), size=2048, sf=0.125, phase=0.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    texRes=512, interpolate=False, depth=-5.0)
 import pickle
 import shutil
 base = u'V:\\users\\Aaron'
@@ -145,27 +142,19 @@ for thisTrial in trials:
     trialClock.reset()  # clock
     frameN = -1
     continueRoutine = True
-    routineTimer.add(8.000000)
+    routineTimer.add(12.000000)
     # update component parameters for each repeat
     
     
     polygon.setFillColor(color)
     polygon.setLineColor(color)
-    if thisTrial != None:
-        trial_text = ''
-        for paramName in thisTrial.keys():
-            exec('temp = ' + paramName)
-            trial_text += u'%s = %s  \n' % (paramName, temp)
-        print(trial_text)
-    text2.text = trial_text
-    win2.flip()
     if not saved:
         pickle.dump(trials, open(filename+'.p','wb'))
         saved=True
         print('Saved to %s' % filename+'.p')
         
     # keep track of which components have finished
-    trialComponents = [TrialTrigger, grating, polygon]
+    trialComponents = [TrialTrigger, polygon, grating, grating_2]
     for thisComponent in trialComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -190,16 +179,6 @@ for thisTrial in trials:
         
         
         
-        # *grating* updates
-        if t >= 4 and grating.status == NOT_STARTED:
-            # keep track of start time/frame for later
-            grating.tStart = t
-            grating.frameNStart = frameN  # exact frame index
-            grating.setAutoDraw(True)
-        frameRemains = 4 + 4- win.monitorFramePeriod * 0.75  # most of one frame period left
-        if grating.status == STARTED and t >= frameRemains:
-            grating.setAutoDraw(False)
-        
         # *polygon* updates
         if t >= 0.0 and polygon.status == NOT_STARTED:
             # keep track of start time/frame for later
@@ -210,6 +189,25 @@ for thisTrial in trials:
         if polygon.status == STARTED and t >= frameRemains:
             polygon.setAutoDraw(False)
         
+        # *grating* updates
+        if t >= 4 and grating.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            grating.tStart = t
+            grating.frameNStart = frameN  # exact frame index
+            grating.setAutoDraw(True)
+        frameRemains = 4 + 4- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if grating.status == STARTED and t >= frameRemains:
+            grating.setAutoDraw(False)
+        
+        # *grating_2* updates
+        if t >= 8 and grating_2.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            grating_2.tStart = t
+            grating_2.frameNStart = frameN  # exact frame index
+            grating_2.setAutoDraw(True)
+        frameRemains = 8 + 4- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if grating_2.status == STARTED and t >= frameRemains:
+            grating_2.setAutoDraw(False)
         
         
         # check if all components have finished
@@ -238,11 +236,9 @@ for thisTrial in trials:
     
     
     
-    
     thisExp.nextEntry()
     
 # completed 20 repeats of 'trials'
-
 
 
 

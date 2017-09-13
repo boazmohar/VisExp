@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on July 14, 2017, at 12:07
+    on September 09, 2017, at 16:28
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -27,7 +27,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 expName = 'Grating_Full'  # from the Builder filename that created this script
-expInfo = {u'participant': u'BMWR67', u'Run': u'Run1'}
+expInfo = {u'participant': u'BMWR70', u'Run': u'Run1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -128,7 +128,7 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=12, method='sequential', 
+trials = data.TrialHandler(nReps=30, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('Grating_params.xlsx'),
     seed=None, name='trials')
@@ -240,7 +240,7 @@ for thisTrial in trials:
     
     thisExp.nextEntry()
     
-# completed 12 repeats of 'trials'
+# completed 30 repeats of 'trials'
 
 
 # ------Prepare to start Routine "end"-------

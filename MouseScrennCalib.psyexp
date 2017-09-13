@@ -50,35 +50,13 @@
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
       <CodeComponent name="texture">
-        <Param name="Begin Experiment" updates="constant" val="tex1 = np.ones((2,2,3)) *-1&amp;#10;tex1[0, 0, 2] = 1&amp;#10;tex1[1, 1, 2] = 1" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="tex1 = np.ones((8,8,3)) *-1&amp;#10;tex1[:4, :4, 2] = 1&amp;#10;tex1[4:, 4:, 2] = 1&amp;#10;&amp;#10;tex2 = np.ones((8,8,3)) *-1&amp;#10;tex2[:4, 4:, 2] = 1&amp;#10;tex2[4:, :4, 2] = 1" valType="extendedCode"/>
         <Param name="name" updates="None" val="texture" valType="code"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
-      <GratingComponent name="grating">
-        <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="tex" updates="constant" val="$tex1" valType="str"/>
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="name" updates="None" val="grating" valType="code"/>
-        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
-        <Param name="stopVal" updates="constant" val="4" valType="code"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="mask" updates="constant" val="None" valType="str"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="interpolate" updates="constant" val="nearest" valType="str"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="units" updates="None" val="pix" valType="str"/>
-        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
-        <Param name="phase" updates="constant" val="0.0" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="4" valType="code"/>
-        <Param name="sf" updates="constant" val="0.5" valType="code"/>
-        <Param name="size" updates="constant" val="2048" valType="code"/>
-      </GratingComponent>
       <PolygonComponent name="polygon">
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
@@ -100,14 +78,50 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="size" updates="constant" val="(2, 2)" valType="code"/>
       </PolygonComponent>
-      <CodeComponent name="TrialType">
-        <Param name="Begin Experiment" updates="constant" val="win2 = visual.Window(&amp;#10;    size=(600, 600), fullscr=False, screen=0,&amp;#10;    allowGUI=False, allowStencil=False,&amp;#10;    monitor=u'test2', color=[-1,-1,-1], colorSpace='rgb',&amp;#10;    blendMode='avg', useFBO=True, pos=[300, 300])&amp;#10;text2 = visual.TextStim(win=win2, name='text',&amp;#10;    text='',&amp;#10;    font=u'Arial',&amp;#10;    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, &amp;#10;    color=u'white', colorSpace='rgb', opacity=1,&amp;#10;    depth=-6.0);&amp;#10;&amp;#10;text2.setAutoDraw(True)" valType="extendedCode"/>
-        <Param name="name" updates="None" val="TrialType" valType="code"/>
-        <Param name="Begin Routine" updates="constant" val="if thisTrial != None:&amp;#10;    trial_text = ''&amp;#10;    for paramName in thisTrial.keys():&amp;#10;        exec('temp = ' + paramName)&amp;#10;        trial_text += u'%s = %s  \n' % (paramName, temp)&amp;#10;    print(trial_text)&amp;#10;text2.text = trial_text&amp;#10;win2.flip()" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-      </CodeComponent>
+      <GratingComponent name="grating">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="tex" updates="constant" val="$tex1" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="grating" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="stopVal" updates="constant" val="4" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="interpolate" updates="constant" val="nearest" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="pix" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="phase" updates="constant" val="0.0" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="4" valType="code"/>
+        <Param name="sf" updates="constant" val="0.125" valType="code"/>
+        <Param name="size" updates="constant" val="2048" valType="code"/>
+      </GratingComponent>
+      <GratingComponent name="grating_2">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="tex" updates="constant" val="$tex2" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="grating_2" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="stopVal" updates="constant" val="4" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="interpolate" updates="constant" val="nearest" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="pix" valType="str"/>
+        <Param name="texture resolution" updates="constant" val="512" valType="code"/>
+        <Param name="phase" updates="constant" val="0.0" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="8" valType="code"/>
+        <Param name="sf" updates="constant" val="0.125" valType="code"/>
+        <Param name="size" updates="constant" val="2048" valType="code"/>
+      </GratingComponent>
       <CodeComponent name="save_to_dm11">
         <Param name="Begin Experiment" updates="constant" val="import pickle&amp;#10;import shutil&amp;#10;base = u'V:\\users\\Aaron'&amp;#10;date = data.getDateStr(format='%y%m%d')&amp;#10;filename = '%s\\%s_%s\\%s\\vis' % (base, date,&amp;#10;expInfo['participant'], expInfo['Run'])&amp;#10;directory = os.path.dirname(filename)&amp;#10;if not os.path.exists(directory):&amp;#10;    os.makedirs(directory)&amp;#10;#os.chdir(directory)&amp;#10;saved=False&amp;#10;logging.filename = filename+'.log'&amp;#10;thisExp.filename=filename&amp;#10;src = _thisDir + '\\' + expName + '.psyexp'&amp;#10;des = directory + '\\' + expName + '.psyexp'&amp;#10;shutil.copy(src, des)&amp;#10;print('copied %s to %s' % (src, des))" valType="extendedCode"/>
         <Param name="name" updates="None" val="save_to_dm11" valType="code"/>

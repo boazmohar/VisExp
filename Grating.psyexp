@@ -73,8 +73,8 @@
         <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
         <Param name="stopVal" updates="constant" val="4" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="mask" updates="constant" val="circle" valType="str"/>
-        <Param name="pos" updates="set every repeat" val="(45, -35)" valType="code"/>
+        <Param name="mask" updates="constant" val="raisedCos" valType="str"/>
+        <Param name="pos" updates="set every repeat" val="(10, -20)" valType="code"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="deg" valType="str"/>
@@ -127,9 +127,9 @@
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="12" valType="code"/>
+      <Param name="nReps" updates="None" val="20" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 0}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 45}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 90}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 135}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 180}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 225}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 270}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 315}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'ori': 0, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 180, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 225, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 270, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 315, 'pos': [0, 0], 'sf': 2}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on July 14, 2017, at 11:45
+    on August 21, 2017, at 18:05
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -95,7 +95,7 @@ tex[:,256:, -1] = 1
 #text2.setAutoDraw(True)
 grating = visual.GratingStim(
     win=win, name='grating',units='deg', 
-    tex=tex, mask=u'circle',
+    tex=tex, mask=u'raisedCos',
     ori=1.0, pos=[0,0], size=(40, 40), sf=1.0, phase=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     texRes=512, interpolate=True, depth=-4.0)
@@ -128,7 +128,7 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=12, method='sequential', 
+trials = data.TrialHandler(nReps=20, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('Grating_params.xlsx'),
     seed=None, name='trials')
@@ -163,7 +163,7 @@ for thisTrial in trials:
         print(trial_text)
     #text2.text = trial_text
     #win2.flip()
-    grating.setPos((45, -35))
+    grating.setPos((10, -20))
     grating.setOri(ori)
     grating.setSF(sf)
     if not saved:
@@ -240,7 +240,7 @@ for thisTrial in trials:
     
     thisExp.nextEntry()
     
-# completed 12 repeats of 'trials'
+# completed 20 repeats of 'trials'
 
 
 # ------Prepare to start Routine "end"-------
