@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on September 20, 2017, at 16:05
+    on September 13, 2017, at 15:32
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -11,7 +11,7 @@ If you publish work using this script please cite the PsychoPy publications:
 """
 
 from __future__ import absolute_import, division
-from psychopy import locale_setup, gui, visual, core, data, event, logging, sound, parallel
+from psychopy import gui, visual, core, data, event, logging, sound, parallel
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 import numpy as np  # whole numpy lib is available, prepend 'np.'
@@ -26,8 +26,8 @@ _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemen
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-expName = 'Grating'  # from the Builder filename that created this script
-expInfo = {u'participant': u'BMWR67', u'Run': u'Run1'}
+expName = 'RF'  # from the Builder filename that created this script
+expInfo = {u'participant': u'BMWR70', u'Run': u'Run1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -51,12 +51,18 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Start Code - component code to be run before the window creation
 
+from camstim import Window, Warp 
+win = Window(fullscr=True,
+    size=(1280, 1024),color=[-1,-1,0], colorSpace='rgb',
+                monitor='xrite',
+                screen=1,
+                warp=Warp.Spherical,)
 # Setup the Window
-win = visual.Window(
-    size=(1280, 1024), fullscr=True, screen=1,
-    allowGUI=False, allowStencil=False,
-    monitor='test2', color=[-1,-1,0], colorSpace='rgb',
-    blendMode='avg', useFBO=True)
+#win = visual.Window(, fullscr=True, screen=1,
+#    allowGUI=False, allowStencil=False,
+#    monitor='xrite', color=[-1,-1,0], colorSpace='rgb',
+#    blendMode='avg', useFBO=True,
+#    units='norm')
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
 if expInfo['frameRate'] != None:
@@ -68,8 +74,10 @@ else:
 trialClock = core.Clock()
 from psychopy.hardware import labjacks
 TrialTrigger = labjacks.U3()
-# Adding status to labjack U3
+# Add status to the labjack U3
 TrialTrigger.status=None
+
+
 import numpy as np
 import psychopy.filters
 grating_res = 512
@@ -78,27 +86,32 @@ grating_res = 512
 # initialise a 'black' texture
 tex = np.ones((grating_res, grating_res, 3)) * -1.0
 # replace the blue channel with the grating
-#tex[..., -1] = grating
 tex[:,256:, -1] = 1
-#win2 = visual.Window(
-#    size=(600, 600), fullscr=False, screen=0,
-#    allowGUI=False, allowStencil=False,
-#    monitor=u'test2', color=[-1,-1,-1], colorSpace='rgb',
-#    blendMode='avg', useFBO=True, pos=[300, 300])
-#text2 = visual.TextStim(win=win2, name='text',
-#    text='',
-#    font=u'Arial',
-#    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
-#    color=u'white', colorSpace='rgb', opacity=1,
-#    depth=-6.0);
-
-#text2.setAutoDraw(True)
+#tex[..., -1] = grating
 grating = visual.GratingStim(
     win=win, name='grating',units='deg', 
-    tex=tex, mask=u'raisedCos',
-    ori=1.0, pos=[0,0], size=(30, 30), sf=1.0, phase=1.0,
+    tex=tex, mask='raisedCos',
+    ori=1.0, pos=[0,0], size=1.0, sf=1.0, phase=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     texRes=512, interpolate=True, depth=-4.0)
+grating_2 = visual.GratingStim(
+    win=win, name='grating_2',units='deg', 
+    tex=tex, mask='raisedCos',
+    ori=1.0, pos=[0,0], size=1.0, sf=1.0, phase=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    texRes=512, interpolate=True, depth=-5.0)
+grating_3 = visual.GratingStim(
+    win=win, name='grating_3',units='deg', 
+    tex=tex, mask='raisedCos',
+    ori=1.0, pos=[0,0], size=1.0, sf=1.0, phase=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    texRes=512, interpolate=True, depth=-6.0)
+grating_4 = visual.GratingStim(
+    win=win, name='grating_4',units='deg', 
+    tex=tex, mask='raisedCos',
+    ori=1.0, pos=[0,0], size=1.0, sf=1.0, phase=1.0,
+    color=[1,1,1], colorSpace='rgb', opacity=1,
+    texRes=512, interpolate=True, depth=-7.0)
 import pickle
 import shutil
 base = u'V:\\users\\Aaron'
@@ -128,9 +141,9 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=20, method='sequential', 
-    extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions('Grating_params.xlsx'),
+trials = data.TrialHandler(nReps=10, method='sequential', 
+    extraInfo=expInfo, originPath=None,
+    trialList=data.importConditions(u'Retinotopy_custom.xlsx'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -154,25 +167,36 @@ for thisTrial in trials:
     routineTimer.add(10.000000)
     # update component parameters for each repeat
     
-    
     if thisTrial != None:
         trial_text = ''
         for paramName in thisTrial.keys():
             exec('temp = ' + paramName)
             trial_text += u'%s = %s  \n' % (paramName, temp)
         print(trial_text)
-    #text2.text = trial_text
-    #win2.flip()
-    grating.setPos((45, 0))
-    grating.setOri(ori)
+    
+    grating.setPos(pos)
+    grating.setOri(0)
     grating.setSF(sf)
+    grating.setSize(size)
+    grating_2.setPos(pos)
+    grating_2.setOri(45)
+    grating_2.setSF(sf)
+    grating_2.setSize(size)
+    grating_3.setPos(pos)
+    grating_3.setOri(90)
+    grating_3.setSF(sf)
+    grating_3.setSize(size)
+    grating_4.setPos(pos)
+    grating_4.setOri(135)
+    grating_4.setSF(sf)
+    grating_4.setSize(size)
     if not saved:
         pickle.dump(trials, open(filename+'.p','wb'))
         saved=True
         print('Saved to %s' % filename+'.p')
         
     # keep track of which components have finished
-    trialComponents = [TrialTrigger, grating]
+    trialComponents = [TrialTrigger, grating, grating_2, grating_3, grating_4]
     for thisComponent in trialComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -204,11 +228,47 @@ for thisTrial in trials:
             grating.tStart = t
             grating.frameNStart = frameN  # exact frame index
             grating.setAutoDraw(True)
-        frameRemains = 6 + 4- win.monitorFramePeriod * 0.75  # most of one frame period left
+        frameRemains = 6 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
         if grating.status == STARTED and t >= frameRemains:
             grating.setAutoDraw(False)
         if grating.status == STARTED:  # only update if drawing
             grating.setPhase(trialClock.getTime()*freq, log=False)
+        
+        # *grating_2* updates
+        if t >= 7 and grating_2.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            grating_2.tStart = t
+            grating_2.frameNStart = frameN  # exact frame index
+            grating_2.setAutoDraw(True)
+        frameRemains = 7 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if grating_2.status == STARTED and t >= frameRemains:
+            grating_2.setAutoDraw(False)
+        if grating_2.status == STARTED:  # only update if drawing
+            grating_2.setPhase(trialClock.getTime()*freq, log=False)
+        
+        # *grating_3* updates
+        if t >= 8 and grating_3.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            grating_3.tStart = t
+            grating_3.frameNStart = frameN  # exact frame index
+            grating_3.setAutoDraw(True)
+        frameRemains = 8 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if grating_3.status == STARTED and t >= frameRemains:
+            grating_3.setAutoDraw(False)
+        if grating_3.status == STARTED:  # only update if drawing
+            grating_3.setPhase(trialClock.getTime()*freq, log=False)
+        
+        # *grating_4* updates
+        if t >= 9 and grating_4.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            grating_4.tStart = t
+            grating_4.frameNStart = frameN  # exact frame index
+            grating_4.setAutoDraw(True)
+        frameRemains = 9 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if grating_4.status == STARTED and t >= frameRemains:
+            grating_4.setAutoDraw(False)
+        if grating_4.status == STARTED:  # only update if drawing
+            grating_4.setPhase(trialClock.getTime()*freq, log=False)
         
         
         # check if all components have finished
@@ -240,7 +300,7 @@ for thisTrial in trials:
     
     thisExp.nextEntry()
     
-# completed 20 repeats of 'trials'
+# completed 10 repeats of 'trials'
 
 
 # ------Prepare to start Routine "end"-------

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on August 07, 2017, at 19:14
+    on September 26, 2017, at 10:07
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -26,8 +26,8 @@ _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemen
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-expName = 'Grating_Interleaved'  # from the Builder filename that created this script
-expInfo = {u'participant': u'BMWR67', u'Run': u'Run1'}
+expName = u'Grating_Interleaved'  # from the Builder filename that created this script
+expInfo = {u'participant': u'BMWR74', u'Run': u'Run3'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -55,7 +55,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 win = visual.Window(
     size=(1280, 1024), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor='xrite', color=[-1,-1,0], colorSpace='rgb',
+    monitor=u'test2', color=[-1,-1,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -128,9 +128,9 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=15, method='random', 
+trials = data.TrialHandler(nReps=10, method='random', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions('Grating_custom.xlsx'),
+    trialList=data.importConditions(u'Grating_custom.xlsx'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -241,7 +241,7 @@ for thisTrial in trials:
     
     thisExp.nextEntry()
     
-# completed 15 repeats of 'trials'
+# completed 10 repeats of 'trials'
 
 
 # ------Prepare to start Routine "end"-------

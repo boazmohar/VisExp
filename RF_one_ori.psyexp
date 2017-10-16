@@ -6,7 +6,7 @@
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
     <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR70', u'Run': u'Run1'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
-    <Param name="Units" updates="None" val="use prefs" valType="str"/>
+    <Param name="Units" updates="None" val="norm" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
@@ -22,7 +22,7 @@
     <Param name="Show mouse" updates="None" val="False" valType="bool"/>
     <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
     <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
-    <Param name="expName" updates="None" val="Grating_Full" valType="str"/>
+    <Param name="expName" updates="None" val="RF_one_ori" valType="str"/>
     <Param name="logging level" updates="None" val="exp" valType="code"/>
     <Param name="Screen" updates="None" val="2" valType="num"/>
   </Settings>
@@ -41,26 +41,26 @@
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="startData" updates="None" val="255" valType="code"/>
       </ParallelOutComponent>
-      <CodeComponent name="U3_Status">
-        <Param name="Begin Experiment" updates="constant" val="# Adding status to labjack U3&amp;#10;TrialTrigger.status=None" valType="extendedCode"/>
-        <Param name="name" updates="None" val="U3_Status" valType="code"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-      </CodeComponent>
-      <CodeComponent name="tex">
-        <Param name="Begin Experiment" updates="constant" val="import numpy as np&amp;#10;import psychopy.filters&amp;#10;grating_res = 512&amp;#10;&amp;#10;#grating = psychopy.filters.makeGrating(res=grating_res, cycles=1.0)&amp;#10;# initialise a 'black' texture&amp;#10;tex = np.ones((grating_res, grating_res, 3)) * -1.0&amp;#10;# replace the blue channel with the grating&amp;#10;#tex[..., -1] = grating&amp;#10;tex[:,256:, -1] = 1" valType="extendedCode"/>
-        <Param name="name" updates="None" val="tex" valType="code"/>
+      <CodeComponent name="U3Status">
+        <Param name="Begin Experiment" updates="constant" val="# Add status to the labjack U3&amp;#10;TrialTrigger.status=None&amp;#10;" valType="extendedCode"/>
+        <Param name="name" updates="None" val="U3Status" valType="code"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
       <CodeComponent name="TrialType">
-        <Param name="Begin Experiment" updates="constant" val="#win2 = visual.Window(&amp;#10;#    size=(600, 600), fullscr=False, screen=0,&amp;#10;#    allowGUI=False, allowStencil=False,&amp;#10;#    monitor=u'test2', color=[-1,-1,-1], colorSpace='rgb',&amp;#10;#    blendMode='avg', useFBO=True, pos=[300, 300])&amp;#10;#text2 = visual.TextStim(win=win2, name='text',&amp;#10;#    text='',&amp;#10;#    font=u'Arial',&amp;#10;#    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, &amp;#10;#    color=u'white', colorSpace='rgb', opacity=1,&amp;#10;#    depth=-6.0);&amp;#10;&amp;#10;#text2.setAutoDraw(True)" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="name" updates="None" val="TrialType" valType="code"/>
-        <Param name="Begin Routine" updates="constant" val="if thisTrial != None:&amp;#10;    trial_text = ''&amp;#10;    for paramName in thisTrial.keys():&amp;#10;        exec('temp = ' + paramName)&amp;#10;        trial_text += u'%s = %s  \n' % (paramName, temp)&amp;#10;    print(trial_text)&amp;#10;#text2.text = trial_text&amp;#10;#win2.flip()" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if thisTrial != None:&amp;#10;    trial_text = ''&amp;#10;    for paramName in thisTrial.keys():&amp;#10;        exec('temp = ' + paramName)&amp;#10;        trial_text += u'%s = %s  \n' % (paramName, temp)&amp;#10;    print(trial_text)" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+      <CodeComponent name="tex">
+        <Param name="Begin Experiment" updates="constant" val="import numpy as np&amp;#10;import psychopy.filters&amp;#10;grating_res = 512&amp;#10;&amp;#10;#grating = psychopy.filters.makeGrating(res=grating_res, cycles=1.0)&amp;#10;# initialise a 'black' texture&amp;#10;tex = np.ones((grating_res, grating_res, 3)) * -1.0&amp;#10;# replace the blue channel with the grating&amp;#10;tex[:,256:, -1] = 1&amp;#10;#tex[..., -1] = grating" valType="extendedCode"/>
+        <Param name="name" updates="None" val="tex" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
@@ -73,19 +73,19 @@
         <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
         <Param name="stopVal" updates="constant" val="4" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="mask" updates="constant" val="" valType="str"/>
-        <Param name="pos" updates="set every repeat" val="(0, 0)" valType="code"/>
+        <Param name="mask" updates="constant" val="raisedCos" valType="str"/>
+        <Param name="pos" updates="set every repeat" val="$pos" valType="code"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="deg" valType="str"/>
         <Param name="texture resolution" updates="constant" val="512" valType="code"/>
         <Param name="phase" updates="set every frame" val="trialClock.getTime()*freq" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="ori" updates="set every repeat" val="$ori" valType="code"/>
+        <Param name="ori" updates="set every repeat" val="180" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="startVal" updates="None" val="6" valType="code"/>
         <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
-        <Param name="size" updates="constant" val="(250, 250)" valType="code"/>
+        <Param name="size" updates="set every repeat" val="$size" valType="code"/>
       </GratingComponent>
       <CodeComponent name="save_to_dm11">
         <Param name="Begin Experiment" updates="constant" val="import pickle&amp;#10;import shutil&amp;#10;base = u'V:\\users\\Aaron'&amp;#10;date = data.getDateStr(format='%y%m%d')&amp;#10;filename = '%s\\%s_%s\\%s\\vis' % (base, date,&amp;#10;expInfo['participant'], expInfo['Run'])&amp;#10;directory = os.path.dirname(filename)&amp;#10;if not os.path.exists(directory):&amp;#10;    os.makedirs(directory)&amp;#10;#os.chdir(directory)&amp;#10;saved=False&amp;#10;logging.filename = filename+'.log'&amp;#10;thisExp.filename=filename&amp;#10;src = _thisDir + '\\' + expName + '.psyexp'&amp;#10;des = directory + '\\' + expName + '.psyexp'&amp;#10;shutil.copy(src, des)&amp;#10;print('copied %s to %s' % (src, des))" valType="extendedCode"/>
@@ -122,14 +122,14 @@
   </Routines>
   <Flow>
     <LoopInitiator loopType="TrialHandler" name="trials">
-      <Param name="conditionsFile" updates="None" val="Grating_params.xlsx" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="Retinotopy_custom.xlsx" valType="str"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="30" valType="code"/>
+      <Param name="nReps" updates="None" val="10" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'ori': 0, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 180, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 225, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 270, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 315, 'pos': [0, 0], 'sf': 2}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'size': [40, 40], 'pos': [15, 30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [45, 30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [75, 30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [15, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [45, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [75, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [15, -30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [45, -30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [40, 40], 'pos': [75, -30], 'sf': 0.029999999999999999}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

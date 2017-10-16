@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 <PsychoPy2experiment encoding="utf-8" version="1.85.1">
   <Settings>
-    <Param name="Monitor" updates="None" val="xrite" valType="str"/>
+    <Param name="Monitor" updates="None" val="test2" valType="str"/>
     <Param name="color" updates="None" val="$[-1,-1,0]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
-    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR70', u'Run': u'Run1'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR74', u'Run': u'Run2'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
     <Param name="Units" updates="None" val="norm" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
@@ -195,7 +195,7 @@
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="10" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 0.03, 'pos': [-45, 45], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [0, 45], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [45, 45], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [-45, 0], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [0, 0], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [45, 0], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [-45, -45], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [0, -45], 'size': [55, 55]}, {'freq': 1, 'sf': 0.03, 'pos': [45, -45], 'size': [55, 55]}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'size': [55, 55], 'pos': [-45, 45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [0, 45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [45, 45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [-45, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [0, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [45, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [-45, -45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [0, -45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [45, -45], 'sf': 0.029999999999999999}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
