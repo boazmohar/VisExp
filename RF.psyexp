@@ -10,7 +10,7 @@
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
-    <Param name="Window size (pixels)" updates="None" val="[1280, 1024]" valType="code"/>
+    <Param name="Window size (pixels)" updates="None" val="[1920, 1200]" valType="code"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
@@ -154,9 +154,9 @@
         <Param name="size" updates="set every repeat" val="$size" valType="code"/>
       </GratingComponent>
       <CodeComponent name="save_to_dm11">
-        <Param name="Begin Experiment" updates="constant" val="import pickle&amp;#10;import shutil&amp;#10;base = u'V:\\users\\Aaron'&amp;#10;date = data.getDateStr(format='%y%m%d')&amp;#10;filename = '%s\\%s_%s\\%s\\vis' % (base, date,&amp;#10;expInfo['participant'], expInfo['Run'])&amp;#10;directory = os.path.dirname(filename)&amp;#10;if not os.path.exists(directory):&amp;#10;    os.makedirs(directory)&amp;#10;#os.chdir(directory)&amp;#10;saved=False&amp;#10;logging.filename = filename+'.log'&amp;#10;thisExp.filename=filename&amp;#10;src = _thisDir + '\\' + expName + '.psyexp'&amp;#10;des = directory + '\\' + expName + '.psyexp'&amp;#10;shutil.copy(src, des)&amp;#10;print('copied %s to %s' % (src, des))" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="from copy_dm11 import dm11_start, dm11_trial&amp;#10;filename = dm11_start(data, expInfo, logging, thisExp, _thisDir, expName)" valType="extendedCode"/>
         <Param name="name" updates="None" val="save_to_dm11" valType="code"/>
-        <Param name="Begin Routine" updates="constant" val="if not saved:&amp;#10;    pickle.dump(trials, open(filename+'.p','wb'))&amp;#10;    saved=True&amp;#10;    print('Saved to %s' % filename+'.p')&amp;#10;    " valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="dm11_trial(filename, trials)" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
@@ -195,7 +195,7 @@
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="10" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'size': [55, 55], 'pos': [-45, 45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [0, 45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [45, 45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [-45, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [0, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [45, 0], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [-45, -45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [0, -45], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [55, 55], 'pos': [45, -45], 'sf': 0.029999999999999999}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'size': [55, 55], 'pos': [-45, 45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [0, 45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [45, 45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [-45, 0], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [0, 0], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [45, 0], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [-45, -45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [0, -45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [45, -45], 'sf': 0.03}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

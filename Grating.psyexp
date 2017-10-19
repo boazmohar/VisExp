@@ -88,9 +88,9 @@
         <Param name="size" updates="constant" val="(30, 30)" valType="code"/>
       </GratingComponent>
       <CodeComponent name="save_to_dm11">
-        <Param name="Begin Experiment" updates="constant" val="import pickle&amp;#10;import shutil&amp;#10;base = u'V:\\users\\Aaron'&amp;#10;date = data.getDateStr(format='%y%m%d')&amp;#10;filename = '%s\\%s_%s\\%s\\vis' % (base, date,&amp;#10;expInfo['participant'], expInfo['Run'])&amp;#10;directory = os.path.dirname(filename)&amp;#10;if not os.path.exists(directory):&amp;#10;    os.makedirs(directory)&amp;#10;#os.chdir(directory)&amp;#10;saved=False&amp;#10;logging.filename = filename+'.log'&amp;#10;thisExp.filename=filename&amp;#10;src = _thisDir + '\\' + expName + '.psyexp'&amp;#10;des = directory + '\\' + expName + '.psyexp'&amp;#10;shutil.copy(src, des)&amp;#10;print('copied %s to %s' % (src, des))" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="from copy_dm11 import dm11_start, dm11_trial&amp;#10;filename = dm11_start(data, expInfo, logging, thisExp, _thisDir, expName)&amp;#10;" valType="extendedCode"/>
         <Param name="name" updates="None" val="save_to_dm11" valType="code"/>
-        <Param name="Begin Routine" updates="constant" val="if not saved:&amp;#10;    pickle.dump(trials, open(filename+'.p','wb'))&amp;#10;    saved=True&amp;#10;    print('Saved to %s' % filename+'.p')&amp;#10;    " valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="dm11_trial(filename, trials)" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
@@ -129,7 +129,7 @@
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="20" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'ori': 0, 'sf': 2, 'pos': [0, 0]}, {'freq': 1, 'ori': 45, 'sf': 2, 'pos': [0, 0]}, {'freq': 1, 'ori': 90, 'sf': 2, 'pos': [0, 0]}, {'freq': 1, 'ori': 135, 'sf': 2, 'pos': [0, 0]}, {'freq': 1, 'ori': 180, 'sf': 2, 'pos': [0, 0]}, {'freq': 1, 'ori': 225, 'sf': 2, 'pos': [0, 0]}, {'freq': 1, 'ori': 270, 'sf': 2, 'pos': [0, 0]}, {'freq': 1, 'ori': 315, 'sf': 2, 'pos': [0, 0]}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 0}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 45}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 90}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 135}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 180}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 225}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 270}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 315}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
