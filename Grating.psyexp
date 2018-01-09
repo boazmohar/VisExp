@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <PsychoPy2experiment encoding="utf-8" version="1.85.1">
   <Settings>
-    <Param name="Monitor" updates="None" val="test2" valType="str"/>
+    <Param name="Monitor" updates="None" val="asus_pa248" valType="str"/>
     <Param name="color" updates="None" val="$[-1,-1,0]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
-    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR67', u'Run': u'Run1'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR75', u'Run': u'Run3'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
     <Param name="Units" updates="None" val="use prefs" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
-    <Param name="Window size (pixels)" updates="None" val="[1280, 1024]" valType="code"/>
+    <Param name="Window size (pixels)" updates="None" val="[1920, 1200]" valType="code"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
@@ -129,7 +129,7 @@
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="20" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 0}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 45}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 90}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 135}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 180}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 225}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 270}, {'freq': 1, 'pos': [0, 0], 'sf': 2, 'ori': 315}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'ori': 0, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 45, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 90, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 135, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 180, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 225, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 270, 'pos': [0, 0], 'sf': 2}, {'freq': 1, 'ori': 315, 'pos': [0, 0], 'sf': 2}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

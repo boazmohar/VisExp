@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on September 26, 2017, at 10:07
+    on December 10, 2017, at 11:19
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -26,8 +26,8 @@ _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemen
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-expName = u'Grating_Interleaved'  # from the Builder filename that created this script
-expInfo = {u'participant': u'BMWR74', u'Run': u'Run3'}
+expName = 'Grating_Interleaved'  # from the Builder filename that created this script
+expInfo = {u'participant': u'BMWR75', u'Run': u'Run1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -53,9 +53,9 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1280, 1024), fullscr=True, screen=1,
+    size=(1920, 1200), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor=u'test2', color=[-1,-1,0], colorSpace='rgb',
+    monitor='asus_pa248', color=[-1,-1,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -99,23 +99,9 @@ grating = visual.GratingStim(
     ori=1.0, pos=[0,0], size=1.0, sf=1.0, phase=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     texRes=512, interpolate=True, depth=-4.0)
-import pickle
-import shutil
-base = u'V:\\users\\Aaron'
-date = data.getDateStr(format='%y%m%d')
-filename = '%s\\%s_%s\\%s\\vis' % (base, date,
-expInfo['participant'], expInfo['Run'])
-directory = os.path.dirname(filename)
-if not os.path.exists(directory):
-    os.makedirs(directory)
-#os.chdir(directory)
-saved=False
-logging.filename = filename+'.log'
-thisExp.filename=filename
-src = _thisDir + '\\' + expName + '.psyexp'
-des = directory + '\\' + expName + '.psyexp'
-shutil.copy(src, des)
-print('copied %s to %s' % (src, des))
+from copy_dm11 import dm11_start, dm11_trial
+filename = dm11_start(data, expInfo, logging, thisExp, _thisDir, expName)
+
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
@@ -167,11 +153,7 @@ for thisTrial in trials:
     grating.setOri(ori)
     grating.setSF(sf)
     grating.setSize(size)
-    if not saved:
-        pickle.dump(trials, open(filename+'.p','wb'))
-        saved=True
-        print('Saved to %s' % filename+'.p')
-        
+    dm11_trial(filename, trials)
     # keep track of which components have finished
     trialComponents = [TrialTrigger, grating]
     for thisComponent in trialComponents:

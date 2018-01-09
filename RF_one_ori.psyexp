@@ -81,7 +81,7 @@
         <Param name="texture resolution" updates="constant" val="512" valType="code"/>
         <Param name="phase" updates="set every frame" val="trialClock.getTime()*freq" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="ori" updates="set every repeat" val="180" valType="code"/>
+        <Param name="ori" updates="set every repeat" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="startVal" updates="None" val="6" valType="code"/>
         <Param name="sf" updates="set every repeat" val="$sf" valType="code"/>
@@ -129,7 +129,7 @@
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="10" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 0.03, 'pos': [15, 30], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [45, 30], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [75, 30], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [15, 0], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [45, 0], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [75, 0], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [15, -30], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [45, -30], 'size': [40, 40]}, {'freq': 1, 'sf': 0.03, 'pos': [75, -30], 'size': [40, 40]}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'sf': 0.03, 'pos': [-25, 25], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [0, 25], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [25, 25], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [-25, 0], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [0, 0], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [25, 0], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [-25, -25], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [0, -25], 'size': [30, 30]}, {'freq': 1, 'sf': 0.03, 'pos': [25, -25], 'size': [30, 30]}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

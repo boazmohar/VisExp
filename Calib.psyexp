@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <PsychoPy2experiment encoding="utf-8" version="1.85.1">
   <Settings>
-    <Param name="Monitor" updates="None" val="test2" valType="str"/>
+    <Param name="Monitor" updates="None" val="asus_pa248" valType="str"/>
     <Param name="color" updates="None" val="$[-1,-1,0]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
-    <Param name="Experiment info" updates="None" val="{u'session': u'001', u'participant': u'test'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{u'participant': u'test', u'Run': u'Run1'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
     <Param name="Units" updates="None" val="use prefs" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
-    <Param name="Window size (pixels)" updates="None" val="[1280, 1024]" valType="code"/>
+    <Param name="Window size (pixels)" updates="None" val="[1920, 1200]" valType="code"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
@@ -79,6 +79,14 @@
         <Param name="sf" updates="constant" val="0" valType="code"/>
         <Param name="size" updates="constant" val="(2, 2)" valType="code"/>
       </GratingComponent>
+      <CodeComponent name="save_to_dm11">
+        <Param name="Begin Experiment" updates="constant" val="from copy_dm11 import dm11_start, dm11_trial&amp;#10;filename = dm11_start(data, expInfo, logging, thisExp, _thisDir, expName)&amp;#10;" valType="extendedCode"/>
+        <Param name="name" updates="None" val="save_to_dm11" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="dm11_trial(filename, trials)" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
     </Routine>
     <Routine name="end">
       <ParallelOutComponent name="TrialTriger_2">
@@ -106,14 +114,14 @@
   </Routines>
   <Flow>
     <LoopInitiator loopType="TrialHandler" name="trials">
-      <Param name="conditionsFile" updates="None" val="Calib_params_check.xlsx" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="Calib_params.xlsx" valType="str"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="1" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'Color': [-1, -1, -1]}, {'Color': [-1, -1, -0.5]}, {'Color': [-1, -1, 0]}, {'Color': [-1, -1, 0.5]}, {'Color': [-1, -1, 1]}, {'Color': [-1, -1, -1]}, {'Color': [-1, -1, -0.5]}, {'Color': [-1, -1, 0]}, {'Color': [-1, -1, 0.5]}, {'Color': [-1, -1, 1]}, {'Color': [-1, -1, -1]}, {'Color': [-1, -1, -0.5]}, {'Color': [-1, -1, 0]}, {'Color': [-1, -1, 0.5]}, {'Color': [-1, -1, 1]}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'Color': [-1, -1, -1]}, {'Color': [-1, -1, -0.95]}, {'Color': [-1, -1, -0.9]}, {'Color': [-1, -1, -0.85]}, {'Color': [-1, -1, -0.8]}, {'Color': [-1, -1, -0.75]}, {'Color': [-1, -1, -0.7]}, {'Color': [-1, -1, -0.65]}, {'Color': [-1, -1, -0.6]}, {'Color': [-1, -1, -0.55]}, {'Color': [-1, -1, -0.5]}, {'Color': [-1, -1, -0.45]}, {'Color': [-1, -1, -0.4]}, {'Color': [-1, -1, -0.35]}, {'Color': [-1, -1, -0.3]}, {'Color': [-1, -1, -0.25]}, {'Color': [-1, -1, -0.2]}, {'Color': [-1, -1, -0.15]}, {'Color': [-1, -1, -0.1]}, {'Color': [-1, -1, -0.05]}, {'Color': [-1, -1, 0]}, {'Color': [-1, -1, 0.05]}, {'Color': [-1, -1, 0.1]}, {'Color': [-1, -1, 0.15]}, {'Color': [-1, -1, 0.2]}, {'Color': [-1, -1, 0.25]}, {'Color': [-1, -1, 0.3]}, {'Color': [-1, -1, 0.35]}, {'Color': [-1, -1, 0.4]}, {'Color': [-1, -1, 0.45]}, {'Color': [-1, -1, 0.5]}, {'Color': [-1, -1, 0.55]}, {'Color': [-1, -1, 0.6]}, {'Color': [-1, -1, 0.65]}, {'Color': [-1, -1, 0.7]}, {'Color': [-1, -1, 0.75]}, {'Color': [-1, -1, 0.8]}, {'Color': [-1, -1, 0.85]}, {'Color': [-1, -1, 0.9]}, {'Color': [-1, -1, 0.95]}, {'Color': [-1, -1, 1]}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

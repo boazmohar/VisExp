@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 <PsychoPy2experiment encoding="utf-8" version="1.85.1">
   <Settings>
-    <Param name="Monitor" updates="None" val="test2" valType="str"/>
+    <Param name="Monitor" updates="None" val="asus_pa248" valType="str"/>
     <Param name="color" updates="None" val="$[-1,-1,0]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
-    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR74', u'Run': u'Run2'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{u'participant': u'BMWR76', u'Run': u'Run1'}" valType="code"/>
     <Param name="JS libs" updates="None" val="packaged" valType="str"/>
     <Param name="Units" updates="None" val="norm" valType="str"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
@@ -188,14 +188,14 @@
   </Routines>
   <Flow>
     <LoopInitiator loopType="TrialHandler" name="trials">
-      <Param name="conditionsFile" updates="None" val="RF_params.xlsx" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="Retinotopy_custom.xlsx" valType="str"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="10" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'freq': 1, 'size': [55, 55], 'pos': [-45, 45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [0, 45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [45, 45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [-45, 0], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [0, 0], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [45, 0], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [-45, -45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [0, -45], 'sf': 0.03}, {'freq': 1, 'size': [55, 55], 'pos': [45, -45], 'sf': 0.03}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'freq': 1, 'size': [30, 30], 'pos': [-50, 50], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-30, 50], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-10, 50], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-50, 30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-30, 30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-10, 30], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-50, 10], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-30, 10], 'sf': 0.029999999999999999}, {'freq': 1, 'size': [30, 30], 'pos': [-10, 10], 'sf': 0.029999999999999999}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

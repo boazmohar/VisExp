@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on July 07, 2017, at 13:01
+    on October 19, 2017, at 11:44
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -27,7 +27,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 expName = 'Calib'  # from the Builder filename that created this script
-expInfo = {u'session': u'001', u'participant': u'test'}
+expInfo = {u'participant': u'test', u'Run': u'1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -53,9 +53,9 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1280, 1024), fullscr=True, screen=1,
+    size=(1920, 1200), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor='test2', color=[-1,-1,0], colorSpace='rgb',
+    monitor='asus_pa248', color=[-1,-1,0], colorSpace='rgb',
     blendMode='avg', useFBO=True)
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
@@ -87,7 +87,10 @@ grating = visual.GratingStim(
     tex='sin', mask=None,
     ori=0, pos=(0, 0), size=(2, 2), sf=0, phase=0.0,
     color=1.0, colorSpace='rgb', opacity=1,
-    texRes=128, interpolate=True, depth=-3.0)
+    texRes=512, interpolate=True, depth=-3.0)
+from copy_dm11 import dm11_start, dm11_trial
+filename = dm11_start(data, expInfo, logging, thisExp, _thisDir, expName)
+
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
@@ -134,6 +137,7 @@ for thisTrial in trials:
     text2.text = trial_text
     win2.flip()
     grating.setColor(Color, colorSpace='rgb')
+    dm11_trial(filename, trials)
     # keep track of which components have finished
     trialComponents = [TrialTriger, grating]
     for thisComponent in trialComponents:
@@ -170,6 +174,7 @@ for thisTrial in trials:
         if grating.status == STARTED and t >= frameRemains:
             grating.setAutoDraw(False)
         
+        
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
             break
@@ -193,6 +198,7 @@ for thisTrial in trials:
             thisComponent.setAutoDraw(False)
     if TrialTriger.status == STARTED:
         TrialTriger.setData(int(0))
+    
     
     
     thisExp.nextEntry()
@@ -256,6 +262,7 @@ for thisComponent in endComponents:
         thisComponent.setAutoDraw(False)
 if TrialTriger_2.status == STARTED:
     TrialTriger_2.setData(int(0))
+
 
 
 

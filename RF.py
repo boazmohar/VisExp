@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.1),
-    on October 03, 2017, at 18:20
+    on December 10, 2017, at 10:28
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -27,7 +27,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 expName = 'RF'  # from the Builder filename that created this script
-expInfo = {u'participant': u'BMWR74', u'Run': u'Run2'}
+expInfo = {u'participant': u'BMWR76', u'Run': u'Run1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -53,9 +53,9 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1280, 1024), fullscr=True, screen=1,
+    size=(1920, 1200), fullscr=True, screen=1,
     allowGUI=False, allowStencil=False,
-    monitor='test2', color=[-1,-1,0], colorSpace='rgb',
+    monitor='asus_pa248', color=[-1,-1,0], colorSpace='rgb',
     blendMode='avg', useFBO=True,
     units='norm')
 # store frame rate of monitor if we can measure it
@@ -107,23 +107,8 @@ grating_4 = visual.GratingStim(
     ori=1.0, pos=[0,0], size=1.0, sf=1.0, phase=1.0,
     color=[1,1,1], colorSpace='rgb', opacity=1,
     texRes=512, interpolate=True, depth=-7.0)
-import pickle
-import shutil
-base = u'V:\\users\\Aaron'
-date = data.getDateStr(format='%y%m%d')
-filename = '%s\\%s_%s\\%s\\vis' % (base, date,
-expInfo['participant'], expInfo['Run'])
-directory = os.path.dirname(filename)
-if not os.path.exists(directory):
-    os.makedirs(directory)
-#os.chdir(directory)
-saved=False
-logging.filename = filename+'.log'
-thisExp.filename=filename
-src = _thisDir + '\\' + expName + '.psyexp'
-des = directory + '\\' + expName + '.psyexp'
-shutil.copy(src, des)
-print('copied %s to %s' % (src, des))
+from copy_dm11 import dm11_start, dm11_trial
+filename = dm11_start(data, expInfo, logging, thisExp, _thisDir, expName)
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
@@ -138,7 +123,7 @@ routineTimer = core.CountdownTimer()  # to track time remaining of each (non-sli
 # set up handler to look after randomisation of conditions etc
 trials = data.TrialHandler(nReps=10, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions(u'RF_params.xlsx'),
+    trialList=data.importConditions(u'Retinotopy_custom.xlsx'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -185,11 +170,7 @@ for thisTrial in trials:
     grating_4.setOri(135)
     grating_4.setSF(sf)
     grating_4.setSize(size)
-    if not saved:
-        pickle.dump(trials, open(filename+'.p','wb'))
-        saved=True
-        print('Saved to %s' % filename+'.p')
-        
+    dm11_trial(filename, trials)
     # keep track of which components have finished
     trialComponents = [TrialTrigger, grating, grating_2, grating_3, grating_4]
     for thisComponent in trialComponents:
